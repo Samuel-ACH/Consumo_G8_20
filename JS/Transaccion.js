@@ -76,7 +76,7 @@ function CargarTransaccion(idtransaccion){
     var datostransaccionJson = JSON.stringify(datostransaccion);
 
     $.ajax( {
-        url: UrlGetTransacciones,
+        url: UrlGetTransaccion,
         type: 'POST',
         data: datostransaccionJson,
         datatype: 'JSON',
