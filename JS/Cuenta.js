@@ -1,7 +1,6 @@
 var UrlCuentas = 'http://20.216.41.245:90/G8_20/controller/Cuenta.php?opc=GetCuentas';
 var UrlGetCuenta ='http://20.216.41.245:90/G8_20/controller/Cuenta.php?opc=GetCuenta';
 var UrlInsertCuentas = 'http://20.216.41.245:90/G8_20/controller/Cuenta.php?opc=InsertCuenta';
-var UrlGetCuenta ='http://20.216.41.245:90/G8_20/controller/Cuenta.php?opc=GetCuenta';
 var UrlUpdateCuentas ='http://20.216.41.245:90/G8_20/controller/Cuenta.php?opc=UpdateCuenta';
 var UrlEliminarCuentas='http://20.216.41.245:90/G8_20/controller/Cuenta.php?opc=DeleteCuenta';
 
@@ -20,8 +19,7 @@ function CargarCuentas(){
          var MiItems = response;
          var Valores = '';
 
-           for (i=0; i< MiItems.length; i++)
-           {
+           for (i=0; i< MiItems.length; i++){
                 Valores +=  '<tr>'+
                 '<td>' + MiItems[i].NumeroDeCuenta + '</td>' +
                 '<td>' + MiItems[i].NombreDeCuenta + '</td>' +
@@ -31,10 +29,10 @@ function CargarCuentas(){
                 '<td>' + MiItems[i].SaldoRetenido + '</td>' +
                 '<td>' + MiItems[i].TipoMoneda + '</td>' +
                 '<td>'+
-                '<button class="btn btn-info" onclick="CargarCuentas('+ MiItems[i].NumeroDeCuenta +')">Editar</button>'+
+                '<button class="btn btn-info" onclick="CargarCuenta('+ MiItems[i].NumeroDeCuenta +')">Editar</button>'+
                 '</td>'+
                 '<td>'+
-                '<button class="btn btn-danger" onclick="EliminarCuentas('+ MiItems[i].NumeroDeCuenta +')">Eliminar</button>'+
+                '<button class="btn btn-danger" onclick="EliminarCuenta('+ MiItems[i].NumeroDeCuenta +')">Eliminar</button>'+
                 '</td>'+
                 '</tr>';
                 $('#DataCuentas').html(Valores);
@@ -57,16 +55,17 @@ var datoscuenta = {
 
 var datoscuentajson = JSON.stringify(datoscuenta);
 alert(datoscuentajson);
+
 $.ajax({
     url:UrlInsertCuentas,
     type:'POST',
     data:datoscuentajson,
     datatype:'JSON',
     ccontentType: 'application/json',
-    success: function(response)
+    success: function(reponse)
      {
-        console.log(response);
-        alert('Número de cuenta agregado exitosamente');
+        console.log(reponse);
+        alert('Cuenta agregada exitosamente');
      },
      
      error: function(textStatus, errorThrown)
@@ -101,9 +100,9 @@ function CargarCuenta(idcuenta){
             $('#SaldoRetenido').val(MiItems[0].SaldoRetenido);
             $('#TipoMoneda').val(MiItems[0].TipoMoneda);
 
-            var btnactualizar = '<input type="submit" id="btn_actualizar" onclick="ActualizarCuenta('+MiItems[0].NumeroDeCuenta+ ')"'+
+            var btnactualizar = '<input type="submit" id="btn_actualizar" onclick="ActualizarCuenta('+MiItems[0].NumeroDeCuenta + ')"'+
             'value="Actualizar Cuenta" class="btn btn-primary"></input>';
-            $('#btnagregarcuenta').html(btnactualizar);
+            $('#btnagregarcuenta').html(btnactualizar); 
 
         }
     });
@@ -127,9 +126,9 @@ function ActualizarCuenta(idcuenta){
         data: datoscuentajson,
         datatype: 'JSON',
         contentType:'application/json',
-        success: function (response)
+        success: function (reponse)
         {
-            console.log(response);
+            console.log(reponse);
             alert("Cuenta Actualizada");
         },
             error: function(textStatus,errorThrown){
@@ -146,7 +145,7 @@ function EliminarCuenta(idcuenta){
     };
     var datoscuentajson=JSON.stringify(datoscuenta);
 
-    $.ajax( {
+    $.ajax({
         url: UrlEliminarCuentas,
         type: 'DELETE',
         data: datoscuentajson,
@@ -156,6 +155,6 @@ function EliminarCuenta(idcuenta){
             console.log(reponse);
         }
     });
-    alert("Cuenta Eliminado");
-    CargarCuenta();
+    alert("Cuenta Eliminada");
+    CargarCuentas();
 }
