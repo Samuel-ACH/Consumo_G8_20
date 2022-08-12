@@ -27,7 +27,7 @@ function CargarTransacciones(){
                 '<td>' + MiItems[i].Sucursal + '</td>' +
                 '<td>' + MiItems[i].NumeroDeCuenta + '</td>' +
                 '<td>'+
-                '<button class="btn btn-info" onclick="CargarTransacciones('+ MiItems[i].CodigoTransaccion +')">Editar</button>'+
+                '<button class="btn btn-info" onclick="CargarTransaccion('+ MiItems[i].CodigoTransaccion +')">Editar</button>'+
                 '</td>'+
                 '<td>'+
                 '<button class="btn btn-danger" onclick="EliminarTransaccion('+ MiItems[i].CodigoTransaccion +')">Eliminar</button>'+
@@ -97,8 +97,9 @@ function CargarTransaccion(idtransaccion){
 }
 
 function ActualizarTransaccion(idtransaccion){
-    var datostransaccion={
+    var datostransaccion = {
         CodigoTransaccion: idtransaccion,
+        CodigoTransaccion: $('#CodigoTransaccion').val(),
         TipoTransaccion: $('#TipoTransaccion').val(), 
         CodigoCliente: $('#CodigoCliente').val(),
         FechaTransaccion: $('#FechaTransaccion').val(),
