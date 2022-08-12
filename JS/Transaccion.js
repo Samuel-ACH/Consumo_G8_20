@@ -53,11 +53,11 @@ function AgregarTransacciones(){
     alert(datostransaccionJson);
     $.ajax({
     url: UrlInsertTransacciones,
-    type:'POST',
+    type: 'POST',
     data: datostransaccionJson,
     datatype: 'JSON',
     contentType: 'application/json',
-    success:function(reponse){
+    success: function(reponse){
         console.log(reponse);
         alert('Transaccion agregada correctamente');
 
@@ -66,7 +66,6 @@ function AgregarTransacciones(){
         alert('Error al agregar transaccion'+ textStatus + errorThrown);
     }
  });
- alert('Aviso');
 }
 
 function CargarTransaccion(idtransaccion){
@@ -81,7 +80,7 @@ function CargarTransaccion(idtransaccion){
         data: datostransaccionJson,
         datatype: 'JSON',
         contentType:'application/json',
-        success: function (reponse){
+        success: function(reponse){
             var MiItems= reponse;
             $('#CodigoTransaccion').val(MiItems[0].CodigoTransaccion);
             $('#TipoTransaccion').val(MiItems[0].TipoTransaccion);
@@ -90,32 +89,33 @@ function CargarTransaccion(idtransaccion){
             $('#MontoTransaccion').val(MiItems[0].MontoTransaccion);
             $('#Sucursal').val(MiItems[0].Sucursal);
             $('#NumeroDeCuenta').val(MiItems[0].NumeroDeCuenta);
-            var btnactualizar = '<input type="submit" id="btn_actualizar" onclick="ActualizarTransaccion('+MiItems[0].CodigoTransaccion+ ')"'+
+            var btnactualizar = '<input type="submit" id="btn_actualizar" onclick="ActualizarTransaccion('+MiItems[0].CodigoTransaccion + ')"'+
             'value="Actualizar Transaccion" class="btn btn-primary"></input>';
-            $('#btnagregarsocio').html(btnactualizar);
+            $('#btnagregartransaccion').html(btnactualizar); 
         }
     });
 }
 
 function ActualizarTransaccion(idtransaccion){
     var datostransaccion={
-        CodigoTransaccion:idtransaccion,
+        CodigoTransaccion: idtransaccion,
         TipoTransaccion: $('#TipoTransaccion').val(), 
         CodigoCliente: $('#CodigoCliente').val(),
         FechaTransaccion: $('#FechaTransaccion').val(),
         MontoTransaccion: $('#MontoTransaccion').val(),
         Sucursal: $('#Sucursal').val(),
-        NumeroDeCuenta: $('#NumeroDeCuenta').val()
+        NumeroDeCuenta: $('#NumeroDeCuenta').val(),
     };
     var datostransaccionJson=JSON.stringify(datostransaccion);
-
+    alert(datostransaccionJson);
+     
     $.ajax( {
         url: UrlUpdateTransacciones,
         type: 'PUT',
         data: datostransaccionJson,
         datatype: 'JSON',
         contentType:'application/json',
-        success: function (reponse){
+        success: function(reponse){
             console.log(reponse);
             alert("Transaccion Actualizada");
         },
@@ -142,6 +142,6 @@ function EliminarTransaccion(idtransaccion){
             console.log(reponse);
         }
     });
-    alert("Socio Eliminado");
+    alert("Transaccion Eliminada");
     CargarTransacciones();
 }
