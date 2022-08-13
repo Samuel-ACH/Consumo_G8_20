@@ -33,14 +33,14 @@ function CargarCuentas(){
                 '<td>'+
                 '<button class="btn btn-danger" onclick="EliminarCuenta('+ MiItems[i].NumeroDeCuenta +')">Eliminar</button>'+
                 '</td>'+
-            '</tr>';
-            $('#DataCuentas').html(Valores);
+                '</tr>';
+                $('#DataCuentas').html(Valores);
             }
          }  
     });
 }
 
-function AgregarCuenta(){
+function AgregarCuentas(){
 var datoscuenta = {
     NumeroDeCuenta: $('#NumeroDeCuenta').val(),
     NombreDeCuenta: $('#NombreDeCuenta').val(),
@@ -76,14 +76,14 @@ function CargarCuenta(idcuenta){
     };
     var datoscuentajson = JSON.stringify(datoscuenta);
 
-    $.ajax({
-        url:UrlGetCuenta,
-        ype:'POST',
-        data:datoscuentajson,
-        datatype:'JSON',
-        ccontentType: 'application/json',
-        success: function(response){
-            var MiItems = response;
+    $.ajax( {
+        url: UrlGetCuenta,
+        type: 'POST',
+        data: datoscuentajson,
+        datatype: 'JSON',
+        contentType:'application/json',
+        success: function(reponse){
+            var MiItems= reponse;
             $('#NumeroDeCuenta').val(MiItems[0].NumeroDeCuenta);
             $('#NombreDeCuenta').val(MiItems[0].NombreDeCuenta);
             $('#NumeroDeCliente').val(MiItems[0].NumeroDeCliente);
@@ -92,8 +92,8 @@ function CargarCuenta(idcuenta){
             $('#SaldoRetenido').val(MiItems[0].SaldoRetenido);
             $('#TipoMoneda').val(MiItems[0].TipoMoneda);
             var btnactualizar = '<input type="submit" id="btn_actualizar" onclick="ActualizarCuenta('+ MiItems[0].NumeroDeCuenta + ')"'+
-        'value="Actualizar Cuenta" class="btn btn-primary"></input>';
-        $('#btnagregarcuenta').html(btnactualizar); 
+            'value="Actualizar Cuenta" class="btn btn-primary"></input>';
+            $('#btnagregarcuenta').html(btnactualizar); 
         }
     });
 }
@@ -112,18 +112,18 @@ function ActualizarCuenta(idcuenta){
     var datoscuentajson = JSON.stringify(datoscuenta);
     alert(datoscuentajson);
     
-    $.ajax({
-        url:UrlUpdateCuentas,
-        type:'PUT',
-        data:datoscuentajson,
-        datatype:'JSON',
+    $.ajax( {
+        url: UrlUpdateCuentas,
+        type: 'PUT',
+        data: datoscuentajson,
+        datatype: 'JSON',
         contentType:'application/json',
         success: function(reponse){
-            console.log(reponse);
-            alert("Cuenta actualizada");
+            cconsole.log(reponse);
+            alert("Error al actualizar la cuenta");
         },
         error: function(textStatus,errorThrown){
-            alert('Error al actualizar la cuenta'+ textStatus + errorThrown);
+            alert('Cuenta actualizada');
         }
     });
     alert('Aviso');
