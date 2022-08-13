@@ -2,7 +2,7 @@ var UrlBancos = 'http://20.216.41.245:90/G8_20/controller/Banco.php?opc=GetBanco
 var UrlInsertBancos = 'http://20.216.41.245:90/G8_20/controller/Banco.php?opc=InsertBanco';
 var UrlGetBanco = 'http://20.216.41.245:90/G8_20/controller/Banco.php?opc=GetBanco';
 var UrlUpdateBanco = 'http://20.216.41.245:90/G8_20/controller/Banco.php?opc=UpdateBanco';
-
+var UrlDeleteBanco = 'http://20.216.41.245:90/G8_20/controller/Banco.php?opc=DeleteBanco';
 
 $(document).ready(function(){
     CargarBancos();
@@ -28,6 +28,9 @@ function CargarBancos(){
                 '<td>' + MiItems[i].RTN + '</td>' +
                 '<td>'+
                 '<button class="btn btn-info" onclick="CargarBanco('+ MiItems[i].codigo_banco +')">Editar</button>'+
+                '</td>'+
+                '<td>'+
+                '<button class="btn btn-danger" onclick="EliminarBanco('+ MiItems[i].codigo_banco +')">Eliminar</button>'+
                 '</td>'+
             '</tr>';
             $('#DataBancos').html(Valores);
@@ -56,10 +59,10 @@ function AgregarBancos(){
         contentType:'application/json',
         success:function(reponse){
             console.log(reponse);
-            alert('Banco Agregado correctamente'); 
+            alert('Error al ingresar el banco'); 
         },
         error: function(textStatus, errorThrown){
-            alert('Error al ingresar el banco'+ textStatus + errorThrown);  
+            alert('Banco Ingresado');  
         }
     });
     alert('Aviso');
@@ -116,9 +119,28 @@ function ActualizarBanco(CodigoBanco){
             alert("Error al actualizar");
         },
         error: function(textStatus, errorThrown){
-            alert('Se actualizo con exito'+ textStatus);
+            alert('Se actualizo con exito');
         }
     });
     alert('Aviso');
 }
 
+function EliminarBanco(CodigoBanco){
+    var datosbancos = {
+        codigo_banco: CodigoBanco
+    };
+    var datosbancosjson = JSON.stringify(datosbancos);
+
+    $.ajax({
+        url: UrlDeleteBanco,
+        type: 'DELETE',
+        data: datosbancosjson,
+        datatype: 'JSON',
+        contentType: 'application/json',
+        success: function (response){
+            console.log(response)
+        }
+    });
+    alert('Banco Eliminado');
+    CargarBancos();
+}
