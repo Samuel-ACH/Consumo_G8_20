@@ -50,6 +50,7 @@ function AgregarTransacciones(){
     NumeroDeCuenta: $('#NumeroDeCuenta').val()
 };
     var datostransaccionJson= JSON.stringify(datostransaccion);
+
     alert(datostransaccionJson);
     $.ajax({
     url: UrlInsertTransacciones,
@@ -60,7 +61,6 @@ function AgregarTransacciones(){
     success: function(reponse){
         console.log(reponse);
         alert('Transaccion agregada correctamente');
-
     },
     error: function(textStatus, errorThrown ){
         alert('Error al agregar transaccion'+ textStatus + errorThrown);
