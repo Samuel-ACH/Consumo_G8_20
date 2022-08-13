@@ -77,11 +77,9 @@ $.ajax({
 }
 
 function CargarCuenta(idcuenta){
-    var datoscuenta = 
-    {
+    var datoscuenta = {
         NumeroDeCuenta : idcuenta 
     };
-
     var datoscuentajson = JSON.stringify(datoscuenta);
 
     $.ajax({
@@ -100,10 +98,9 @@ function CargarCuenta(idcuenta){
             $('#SaldoRetenido').val(MiItems[0].SaldoRetenido);
             $('#TipoMoneda').val(MiItems[0].TipoMoneda);
 
-            var btnactualizar = '<input type="submit" id="btn_actualizar" onclick="ActualizarCuenta('+MiItems[0].NumeroDeCuenta + ')"'+
+            var btnactualizar = '<input type="submit" id="btn_actualizar" onclick="ActualizarCuenta(' + MiItems[0].NumeroDeCuenta + ')"'+
             'value="Actualizar Cuenta" class="btn btn-primary"></input>';
             $('#btnagregarcuenta').html(btnactualizar); 
-
         }
     });
 }
