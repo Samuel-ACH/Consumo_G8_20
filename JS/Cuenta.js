@@ -1,8 +1,8 @@
 var UrlCuentas = 'http://20.216.41.245:90/G8_20/controller/Cuenta.php?opc=GetCuentas';
 var UrlInsertCuentas = 'http://20.216.41.245:90/G8_20/controller/Cuenta.php?opc=InsertCuenta';
-var UrlGetCuenta ='http://20.216.41.245:90/G8_20/controller/Cuenta.php?opc=GetCuenta';
-var UrlUpdateCuentas ='http://20.216.41.245:90/G8_20/controller/Cuenta.php?opc=UpdateCuenta';
-var UrlEliminarCuentas='http://20.216.41.245:90/G8_20/controller/Cuenta.php?opc=DeleteCuenta';
+var UrlGetCuenta = 'http://20.216.41.245:90/G8_20/controller/Cuenta.php?opc=GetCuenta';
+var UrlUpdateCuentas = 'http://20.216.41.245:90/G8_20/controller/Cuenta.php?opc=UpdateCuenta';
+var UrlEliminarCuentas ='http://20.216.41.245:90/G8_20/controller/Cuenta.php?opc=DeleteCuenta';
 
 
 $(document).ready (function(){
@@ -33,41 +33,38 @@ function CargarCuentas(){
                 '<td>'+
                 '<button class="btn btn-danger" onclick="EliminarCuenta('+ MiItems[i].NumeroDeCuenta +')">Eliminar</button>'+
                 '</td>'+
-                '</tr>';
-                $('#DataCuentas').html(Valores);
+            '</tr>';
+            $('#DataCuentas').html(Valores);
             }
          }  
-
     });
 }
 
 function AgregarCuenta(){
 var datoscuenta = {
-    NumeroDeCuenta:$('#NumeroDeCuenta').val(),
-    NombreDeCuenta:$('#NombreDeCuenta').val(),
-    NumeroDeCliente:$('#NumeroDeCliente').val(),
-    FechaDeApertura:$('#FechaDeApertura').val(),
-    SaldoActual:$('#SaldoActual').val(),
-    SaldoRetenido:$('#SaldoRetenido').val(),
-    TipoMoneda:$('#TipoMoneda').val(),
+    NumeroDeCuenta: $('#NumeroDeCuenta').val(),
+    NombreDeCuenta: $('#NombreDeCuenta').val(),
+    NumeroDeCliente: $('#NumeroDeCliente').val(),
+    FechaDeApertura: $('#FechaDeApertura').val(),
+    SaldoActual: $('#SaldoActual').val(),
+    SaldoRetenido: $('#SaldoRetenido').val(),
+    TipoMoneda: $('#TipoMoneda').val(),
 };
-
 var datoscuentajson = JSON.stringify(datoscuenta);
 
-
+alert(datoscuentajson);
 $.ajax({
     url:UrlInsertCuentas,
     type:'POST',
     data:datoscuentajson,
     datatype:'JSON',
-    ccontentType: 'application/json',
+    contentType: 'application/json',
     success: function(reponse){
         console.log(reponse);
-        alert('Error al ingresar cuenta');
+        alert('Error al agregar cuenta');
      },
-     error: function(textStatus, errorThrown)
-     {
-        alert('Error al agregar una cuenta nueva'+ textStatus + errorThrown);
+     error: function(textStatus, errorThrown){
+        alert('Cuenta agregada correctamente');
      }
     });
     alert('Aviso');
@@ -75,7 +72,7 @@ $.ajax({
 
 function CargarCuenta(idcuenta){
     var datoscuenta = {
-        NumeroDeCuenta : idcuenta 
+        NumeroDeCuenta: idcuenta 
     };
     var datoscuentajson = JSON.stringify(datoscuenta);
 
@@ -85,8 +82,8 @@ function CargarCuenta(idcuenta){
         data:datoscuentajson,
         datatype:'JSON',
         ccontentType: 'application/json',
-        success: function(reponse) {
-            var MiItems = reponse;
+        success: function(response){
+            var MiItems = response;
             $('#NumeroDeCuenta').val(MiItems[0].NumeroDeCuenta);
             $('#NombreDeCuenta').val(MiItems[0].NombreDeCuenta);
             $('#NumeroDeCliente').val(MiItems[0].NumeroDeCliente);
@@ -94,10 +91,9 @@ function CargarCuenta(idcuenta){
             $('#SaldoActual').val(MiItems[0].SaldoActual);
             $('#SaldoRetenido').val(MiItems[0].SaldoRetenido);
             $('#TipoMoneda').val(MiItems[0].TipoMoneda);
-
-            var btnactualizar = '<input type="submit" id="btn_actualizar" onclick="ActualizarCuenta(' + MiItems[0].NumeroDeCuenta + ')"'+
-            'value="Actualizar Cuenta" class="btn btn-primary"></input>';
-            $('#btnagregarcuenta').html(btnactualizar); 
+            var btnactualizar = '<input type="submit" id="btn_actualizar" onclick="ActualizarCuenta('+ MiItems[0].NumeroDeCuenta + ')"'+
+        'value="Actualizar Cuenta" class="btn btn-primary"></input>';
+        $('#btnagregarcuenta').html(btnactualizar); 
         }
     });
 }
@@ -105,28 +101,28 @@ function CargarCuenta(idcuenta){
 function ActualizarCuenta(idcuenta){
     var datoscuenta = {
         NumeroDeCuenta: idcuenta,
-        NumeroDeCuenta: $('#NumeroDeCuenta').val(),
-        NombreDeCuenta: $('#NombreDeCuenta').val(), 
-        NumeroDeCliente: $('#NumeroDeCliente').val(),
-        FechaDeApertura: $('#FechaDeApertura').val(),
-        SaldoActual: $('#SaldoActual').val(),
-        SaldoRetenido: $('#SaldoRetenido').val(),
-        TipoMoneda: $('#TipoMoneda').val(),
+        NumeroDeCuenta:$('#NumeroDeCuenta').val(),
+        NombreDeCuenta:$('#NombreDeCuenta').val(), 
+        NumeroDeCliente:$('#NumeroDeCliente').val(),
+        FechaDeApertura:$('#FechaDeApertura').val(),
+        SaldoActual:$('#SaldoActual').val(),
+        SaldoRetenido:$('#SaldoRetenido').val(),
+        TipoMoneda:$('#TipoMoneda').val(),
     };
     var datoscuentajson = JSON.stringify(datoscuenta);
+    alert(datoscuentajson);
     
-
     $.ajax({
-        url: UrlUpdateCuentas,
-        type: 'PUT',
-        data: datoscuentajson,
-        datatype: 'JSON',
+        url:UrlUpdateCuentas,
+        type:'PUT',
+        data:datoscuentajson,
+        datatype:'JSON',
         contentType:'application/json',
         success: function(reponse){
             console.log(reponse);
-            alert("Cuenta Actualizada");
+            alert("Cuenta actualizada");
         },
-            error: function(textStatus,errorThrown){
+        error: function(textStatus,errorThrown){
             alert('Error al actualizar la cuenta'+ textStatus + errorThrown);
         }
     });
