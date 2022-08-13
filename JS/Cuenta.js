@@ -6,17 +6,16 @@ var UrlEliminarCuentas='http://20.216.41.245:90/G8_20/controller/Cuenta.php?opc=
 
 
 $(document).ready (function(){
-CargarCuentas();
+    CargarCuentas();
 });
 
 function CargarCuentas(){
     $.ajax({
-
         url: UrlCuentas,
         type: 'GET',
         datatype: 'JSON',
-        success: function(response){
-         var MiItems = response;
+        success: function(reponse){
+         var MiItems = reponse;
          var Valores = '';
 
            for (i=0; i< MiItems.length; i++){
@@ -54,7 +53,7 @@ var datoscuenta = {
 };
 
 var datoscuentajson = JSON.stringify(datoscuenta);
-alert(datoscuentajson);
+
 
 $.ajax({
     url:UrlInsertCuentas,
@@ -62,12 +61,10 @@ $.ajax({
     data:datoscuentajson,
     datatype:'JSON',
     ccontentType: 'application/json',
-    success: function(reponse)
-     {
+    success: function(reponse){
         console.log(reponse);
-        alert('Cuenta agregada exitosamente');
+        alert('Error al ingresar cuenta');
      },
-     
      error: function(textStatus, errorThrown)
      {
         alert('Error al agregar una cuenta nueva'+ textStatus + errorThrown);
@@ -107,17 +104,17 @@ function CargarCuenta(idcuenta){
 
 function ActualizarCuenta(idcuenta){
     var datoscuenta = {
-        NumeroDeCuenta:idcuenta,
+        NumeroDeCuenta: idcuenta,
         NumeroDeCuenta: $('#NumeroDeCuenta').val(),
         NombreDeCuenta: $('#NombreDeCuenta').val(), 
         NumeroDeCliente: $('#NumeroDeCliente').val(),
         FechaDeApertura: $('#FechaDeApertura').val(),
         SaldoActual: $('#SaldoActual').val(),
         SaldoRetenido: $('#SaldoRetenido').val(),
-        TipoMoneda: $('#TipoMoneda').val()
+        TipoMoneda: $('#TipoMoneda').val(),
     };
-    var datoscuentajson=JSON.stringify(datoscuenta);
-    alert(datoscuentajson);
+    var datoscuentajson = JSON.stringify(datoscuenta);
+    
 
     $.ajax({
         url: UrlUpdateCuentas,
