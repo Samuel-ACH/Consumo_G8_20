@@ -51,7 +51,7 @@ function AgregarClientes(){
 };
     var datosclientejson= JSON.stringify(datoscliente);
 
-    alert(datosclientejson);
+    
     $.ajax({
     url: UrlInsertCliente,
     type:'POST',
