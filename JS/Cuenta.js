@@ -1,6 +1,6 @@
 var UrlCuentas = 'http://20.216.41.245:90/G8_20/controller/Cuenta.php?opc=GetCuentas';
-var UrlGetCuenta ='http://20.216.41.245:90/G8_20/controller/Cuenta.php?opc=GetCuenta';
 var UrlInsertCuentas = 'http://20.216.41.245:90/G8_20/controller/Cuenta.php?opc=InsertCuenta';
+var UrlGetCuenta ='http://20.216.41.245:90/G8_20/controller/Cuenta.php?opc=GetCuenta';
 var UrlUpdateCuentas ='http://20.216.41.245:90/G8_20/controller/Cuenta.php?opc=UpdateCuenta';
 var UrlEliminarCuentas='http://20.216.41.245:90/G8_20/controller/Cuenta.php?opc=DeleteCuenta';
 
@@ -90,8 +90,8 @@ function CargarCuenta(idcuenta){
         data:datoscuentajson,
         datatype:'JSON',
         ccontentType: 'application/json',
-        success: function(response) {
-            var MiItems = response;
+        success: function(reponse) {
+            var MiItems = reponse;
             $('#NumeroDeCuenta').val(MiItems[0].NumeroDeCuenta);
             $('#NombreDeCuenta').val(MiItems[0].NombreDeCuenta);
             $('#NumeroDeCliente').val(MiItems[0].NumeroDeCliente);
@@ -109,18 +109,20 @@ function CargarCuenta(idcuenta){
 }
 
 function ActualizarCuenta(idcuenta){
-    var datoscuenta={
+    var datoscuenta = {
         NumeroDeCuenta:idcuenta,
+        NumeroDeCuenta:$('#NumeroDeCuenta').val(),
         NombreDeCuenta: $('#NombreDeCuenta').val(), 
         NumeroDeCliente: $('#NumeroDeCliente').val(),
         FechaDeApertura: $('#FechaDeApertura').val(),
-        SaldoActual: $('#SaldoActua').val(),
+        SaldoActual: $('#SaldoActual').val(),
         SaldoRetenido: $('#SaldoRetenido').val(),
         TipoMoneda: $('#TipoMoneda').val()
     };
     var datoscuentajson=JSON.stringify(datoscuenta);
+    alert(datoscuentajson);
 
-    $.ajax( {
+    $.ajax({
         url: UrlUpdateCuentas,
         type: 'PUT',
         data: datoscuentajson,
