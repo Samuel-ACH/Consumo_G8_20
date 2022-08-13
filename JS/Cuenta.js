@@ -12,7 +12,7 @@ CargarCuentas();
 function CargarCuentas(){
     $.ajax({
 
-        url:UrlCuentas,
+        url: UrlCuentas,
         type: 'GET',
         datatype: 'JSON',
         success: function(response){
@@ -111,7 +111,7 @@ function CargarCuenta(idcuenta){
 function ActualizarCuenta(idcuenta){
     var datoscuenta = {
         NumeroDeCuenta:idcuenta,
-        NumeroDeCuenta:$('#NumeroDeCuenta').val(),
+        NumeroDeCuenta: $('#NumeroDeCuenta').val(),
         NombreDeCuenta: $('#NombreDeCuenta').val(), 
         NumeroDeCliente: $('#NumeroDeCliente').val(),
         FechaDeApertura: $('#FechaDeApertura').val(),
@@ -128,13 +128,12 @@ function ActualizarCuenta(idcuenta){
         data: datoscuentajson,
         datatype: 'JSON',
         contentType:'application/json',
-        success: function (reponse)
-        {
+        success: function(reponse){
             console.log(reponse);
             alert("Cuenta Actualizada");
         },
             error: function(textStatus,errorThrown){
-            alert('Error al actualizar la cuenta'+textStatus + errorThrown);
+            alert('Error al actualizar la cuenta'+ textStatus + errorThrown);
         }
     });
     alert('Aviso');
