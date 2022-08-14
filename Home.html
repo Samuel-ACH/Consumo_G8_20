@@ -12,15 +12,15 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
      <div class="contenedor">
         <div class="img">
-            <img src="https://dircom.unah.edu.hn/themes/portalunah/assets/images/logo-unah.png" style="float:left; padding-right: 10px;" alt="No imagen"  align="center">
+            <img src="https://dircom.unah.edu.hn/themes/portalunah/assets/images/logo-unah.png" alt="No imagen"  align="center">
               
         </div>
      </div>
      <br>
      
     <p align="center"><h1>LENGUAJE DE PROGRAMACIÓN IV</h1></p>
-    <p align="center"><h3>Seccion:2000 </h3></p>
-    <p align="center" ><h3>Grupo:G820</h3></p>
+    <p align="center"><h3>Sección 2000 </h3></p>
+    <p align="center" ><h3>Grupo G820</h3></p>
      <style>
      body{
         background-image: url("https://img.freepik.com/foto-gratis/fondo-acuarela-pintada-mano-forma-cielo-nubes_24972-1095.jpg?w=2000");
@@ -33,18 +33,23 @@
             display: flex;
     }
     h1{color: #08768a;
+        text-align: center;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        font-size: 60px;
+        font-size: 50px;
     }
+    
+
     h3{color: #216974;
+        text-align: center;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif ;
-        font-size: 45px;
+        font-size: 40px;
     }
     .img{
-        margin-left: 20px;    
+        margin-left: 550px;    
      }
-     table{
-            border: 6px solid rgba(33, 14, 204, 0.975);
+     
+     .table{
+            border: 6px solid #D5D7CC;
             font-family: 'Arial Narrow Bold', sans-serif;
             font-size: 20px;
             vertical-align: middle;
@@ -64,46 +69,47 @@
 
 
      </style>
-     <table class="table table-bordered">
+     <table class="table table-striped">
         <thead>
             <tr>
-                <td width="33%" align="center"> <b>Número de Cuenta</b></td>
-                <td width="33%" align="center"> <b>Estudiante</b></td>
-                <td width="33%" align="center"><b>Nombre del Formulario Desarrollado</b></td>
+                <td scope="col" align="center"> <b>Número de Cuenta</b></td>
+                <td scope="col" align="center"> <b>Estudiante</b></td>
+                <td scope="col" align="center"><b>Nombre del Formulario Desarrollado</b></td>
             </tr>
         </thead>
         <tbody>
 
             <tr>
-                <th>20181006792</th>
+                <th scope="row">20181006792</th>
                 <td>Samuel Antonio Castro Henrriquez</td>
                 <td>Formulario de Banco</td>
             </tr>
              
             <tr>
-                <th>20181005543</th>
+                <th scope="row">20181005543</th>
                 <td>Douglas Joel Reyes Padilla </td>
                 <td>Formulario de Cliente</td>
             </tr>
             
             <tr>
-                <th>20181002703</th>
+                <th scope="row">20181002703</th>
                 <td>Karen Yarely Aguilera Portillo</td>
                 <td>Formulario de Transacción</td>
              </tr>
 
              <tr>
-                <th>20181006593</th>
+                <th scope="row">20181006593</th>
                 <td>Heidy Pamela Zelaya Duron</td>
                 <td>Formulario de Cuenta</td>
              </tr>
      </br>
      </tbody>
     </table>
-    <a href="Formularios/Banco.html" type="button" class="btn btn-primary">Registro de Bancos</a>
-    <a href="Formularios/Transaccion.html" type="button" class="btn btn-info">Registro de Transacciones</a>
-    <a href="Formularios/Cuenta.html" type="button" class="btn btn-warning">Registro de Cuentas</a>
-    <a href="Formularios/Cliente.html" type="button" class="btn btn-success">Registro de Clientes</a>
+    <a href="Formularios/Banco.html" type="button" class="btn btn-primary btn-sm">Registro de Bancos</a>
+    <a href="Formularios/Transaccion.html" type="button" class="btn btn-info btn-sm">Registro de Transacciones</a>
+    <a href="Formularios/Cuenta.html" type="button" class="btn btn-warning btn-sm">Registro de Cuentas</a>
+    <a href="Formularios/Cliente.html" type="button" class="btn btn-success btn-sm">Registro de Clientes</a>
+    <a href="Informacion.html" type="button" class="btn btn-danger ">Información</a>
      
 </body>  
 </html>

@@ -52,7 +52,7 @@ var datoscuenta = {
 };
 var datoscuentajson = JSON.stringify(datoscuenta);
 
-alert(datoscuentajson);
+
 $.ajax({
     url:UrlInsertCuentas,
     type:'POST',
