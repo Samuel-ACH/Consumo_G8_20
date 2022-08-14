@@ -60,10 +60,10 @@ function AgregarTransacciones(){
     contentType: 'application/json',
     success: function(reponse){
         console.log(reponse);
-        alert('Transaccion agregada correctamente');
+        alert('Error al agregar la transaccion');
     },
     error: function(textStatus, errorThrown ){
-        alert('Error al agregar transaccion');
+        alert('Transaccion agregada correctamente');
     }
  });
  alert('Aviso');
@@ -119,10 +119,10 @@ function ActualizarTransaccion(idtransaccion){
         contentType:'application/json',
         success: function(reponse){
             console.log(reponse);
-            alert("Transaccion Actualizada");
+            alert("Error al actualizar la Transaccion");
         },
         error: function(textStatus,errorThrown){
-            alert('Error al actualizar la transaccion'+textStatus + errorThrown);
+            alert('Transaccion actualizada correctamente');
         }
     });
     alert('Aviso');
