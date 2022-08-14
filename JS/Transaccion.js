@@ -49,12 +49,12 @@ function AgregarTransacciones(){
     Sucursal: $('#Sucursal').val(),
     NumeroDeCuenta: $('#NumeroDeCuenta').val()
 };
-    var datostransaccionJson= JSON.stringify(datostransaccion);
+    var datostransaccionJson = JSON.stringify(datostransaccion);
 
     alert(datostransaccionJson);
     $.ajax({
     url: UrlInsertTransacciones,
-    type: 'POST',
+    type:'POST',
     data: datostransaccionJson,
     datatype: 'JSON',
     contentType: 'application/json',
@@ -63,9 +63,10 @@ function AgregarTransacciones(){
         alert('Transaccion agregada correctamente');
     },
     error: function(textStatus, errorThrown ){
-        alert('Error al agregar transaccion'+ textStatus + errorThrown);
+        alert('Error al agregar transaccion');
     }
  });
+ alert('Aviso');
 }
 
 function CargarTransaccion(idtransaccion){
